@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - BreaksWall1
   layers:
   - Default
   - TransparentFX
