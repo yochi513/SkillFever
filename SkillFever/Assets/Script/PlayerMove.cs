@@ -18,6 +18,9 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        rb.constraints = RigidbodyConstraints.FreezeRotationX |
+                   RigidbodyConstraints.FreezeRotationZ;
+
         inputAction = new InputSystem_Actions();
 
         inputAction.Player.Move.performed += ctx =>
