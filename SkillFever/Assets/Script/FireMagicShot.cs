@@ -10,6 +10,10 @@ public class FireMagicShot : MonoBehaviour
     //èÒ
     [SerializeField] private Transform wand;
     private Quaternion originalRotation;
+
+    //SE
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip fireSE;
      void Start()
     {
         originalRotation = wand.localRotation;
@@ -22,6 +26,7 @@ public class FireMagicShot : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             Instantiate(fireBallPrefab, shotPoint.position, shotPoint.rotation);
+            audioSource.PlayOneShot(fireSE);
             wand.localRotation *= Quaternion.Euler(-10f,0f,0f);
         }
         wand.localRotation = Quaternion.Slerp(wand.localRotation,originalRotation, Time.deltaTime * 10f);
