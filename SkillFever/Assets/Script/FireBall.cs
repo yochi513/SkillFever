@@ -20,11 +20,27 @@ public class FireBall : MonoBehaviour
    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BreaksWall1"))
+        Health health = other.GetComponent<Health>();
+
+        if (health != null)
         {
-            Destroy(other.gameObject);
-            Instantiate(HitEffectPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+
+            if (other.CompareTag("BreaksWall1"))
+            {
+                health.TakeDamage(20);
+
+              if (health.Gameover==true)
+                {
+                    Destroy(other.gameObject);
+                }
+            }
         }
+
+        //if (other.CompareTag("BreaksWall1"))
+        //{
+        //    Destroy(other.gameObject);
+        //    Instantiate(HitEffectPrefab, transform.position, Quaternion.identity);
+        //    Destroy(gameObject);
+        //}
     }
 }
